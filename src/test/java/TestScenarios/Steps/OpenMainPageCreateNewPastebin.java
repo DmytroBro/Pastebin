@@ -3,22 +3,21 @@ package TestScenarios.Steps;
 import PageObjects.MainPastebinPage;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.WebDriverRunner;
+import org.junit.After;
+import org.junit.Assert;
+import org.junit.Before;
+import org.junit.Test;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Test;
-
-import java.util.logging.Logger;
 
 
-public class OpenManePageCreateNewPastebin {
+public class OpenMainPageCreateNewPastebin {
 
     private WebDriver driver;
     private final MainPastebinPage mainPastebinPage = new MainPastebinPage();
 
-    @BeforeMethod (alwaysRun = true)
+    @Before
     public void browserSetup(){
         driver = new ChromeDriver();
         Dimension dimension = new Dimension(1920, 1080);
@@ -26,7 +25,7 @@ public class OpenManePageCreateNewPastebin {
         WebDriverRunner.getWebDriver().manage().window().setSize(dimension);
     }
 
-    @Test(description = "create a new Pastebin")
+    @Test
     public void createNewPastebinTest() {
 
         driver.get("https://pastebin.com/");
@@ -50,10 +49,9 @@ public class OpenManePageCreateNewPastebin {
         mainPastebinPage.clickOnCreateNewButton();
         System.out.println("Step7. Click on the 'Create New Paste' field.");
 
-
     }
 
-    @AfterMethod(alwaysRun = true)
+    @After
     public void browserTearDown(){
         driver.quit();
         driver=null;
