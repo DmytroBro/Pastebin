@@ -5,6 +5,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+import java.util.concurrent.TimeUnit;
+
 public class OpenMainPageCreateNewPastebin {
     public static void main(String[] args) throws InterruptedException  {
         WebDriver driver = new ChromeDriver();
@@ -20,7 +22,7 @@ public class OpenMainPageCreateNewPastebin {
         WebElement createNewPasteButton = driver.findElement(By.xpath("//button[normalize-space()='Create New Paste']"));
         createNewPasteButton.click();
 
-        Thread.sleep(2000);
+        TimeUnit.SECONDS.sleep(10);
         driver.quit();
     }
 }
